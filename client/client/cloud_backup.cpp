@@ -4,7 +4,7 @@
 //从文件中读取数据
 static bool Read(const string& name, string* body)
 {
-	ifstream fs(name, ios::binary);
+	ifstream fs(name, ios::binary); 
 	if (fs.is_open() == false)
 	{
 		cout << "open file " << name << " failed" << endl;
