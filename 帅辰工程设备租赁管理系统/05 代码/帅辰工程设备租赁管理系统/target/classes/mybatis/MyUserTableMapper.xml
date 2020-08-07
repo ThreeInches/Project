@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinasoft.dao.HandleDao">
+	
+
+	
+	<select id="login" parameterType="MyUser" resultType="MyUserTable">
+	  select * from user where uname=#{uname} and upwd = #{upwd}
+	</select>
+
+
+
+	<select id="selectAll" resultType="map">
+	  select  * from user
+	</select>
+	
+	<select id="selectAllDevice" resultType="map">
+	  select  * from device
+	</select>
+	
+	
+	<select id="selectAllCustom" resultType="map">
+	  select  * from custom
+	</select>
+	
+	<select id="selectAllRent" resultType="map">
+	  select  * from rent
+	</select>
+
+	<select id="selectAllMoney" resultType="map">
+	  select  * from money
+	</select>
+	
+	<select id="selectAllRepair" resultType="map">
+	  select  * from repair
+	</select>
+
+	<select id="selectAllUserByPage" resultType="map">
+	 select  * from user  limit #{startIndex},#{perPageSize}
+	</select>
+	
+	<select id="selectAllDeviceByPage" resultType="map">
+	 select  * from device  limit #{startIndex},#{perPageSize}
+	</select>
+	
+	<select id="selectAllRentByPage" resultType="map">
+	 select  * from rent  limit #{startIndex},#{perPageSize}
+	</select>
+	
+	<select id="selectAllMoneyByPage" resultType="map">
+	 select  * from Money  limit #{startIndex},#{perPageSize}
+	</select>
+	
+	<select id="selectAllCustomByPage" resultType="map">
+	 select  * from custom  limit #{startIndex},#{perPageSize}
+	</select>
+	
+	<select id="selectAllRepairByPage" resultType="map">
+	 select  * from repair  limit #{startIndex},#{perPageSize}
+	</select>
+	
+	
+	<delete id="delete" parameterType="MyUser" >
+	 delete  from user where id=#{id}
+	</delete>
+	
+	<delete id="deletecustom"  >
+	 delete  from custom where cid=#{cid}
+	</delete>
+	
+	<update id="update" parameterType="MyUserTable">
+	 update user set upwd=#{upwd}  where id=#{id}
+	</update>
+	
+	<update id="updatedevicenumber" parameterType="MyDevice" >
+	 update device set rest=#{rest}  where dno=#{dno}
+	</update>
+	
+	<update id="updatedeviceprice" parameterType="MyDevice" >
+	 update device set dprice=#{dprice}  where dno=#{dno}
+	</update>
+	
+	<insert id="insert" parameterType="MyUserTable" >
+	 insert into user (id, uname, upwd, power) values (#{id}, #{uname},#{upwd},#{power})
+	</insert>
+	
+	<insert id="insertdevice" parameterType="MyDevice" >
+	 insert into device (dno, dname, rest, dprice) values (#{dno}, #{dname},#{rest},#{dprice})
+	</insert>
+	
+	<insert id="insertrent" parameterType="MyRent" >
+	 insert into rent (rno, cid, cname, dno, dname,number, g_time, c_time, time, price) values (#{rno}, #{cid},#{cname},#{dno},#{dname}, #{number},#{g_time},#{c_time},#{time},#{price})
+	</insert>
+	
+	<insert id="insertmoney" parameterType="MyMoney" >
+	 insert into money (rno, dno, price, fix_price, all_price) values (#{rno},#{dno}, #{price},#{fix_price},#{all_price})
+	</insert>
+	
+	<insert id="insertrepair" parameterType="MyRepair" >
+	 insert into repair (dno, dname, r_number, r_price) values (#{dno},#{dname},#{r_number}, #{r_price})
+	</insert>
+	
+	<insert id="insertcustom" parameterType="MyCustom" >
+	 insert into custom (cid, cname, tel) values (#{cid},#{cname},#{tel})
+	</insert>
+	
+	
+	<update id="updatecustom" parameterType="MyCustom" >
+	 update custom set tel=#{tel}  where cid=#{cid}
+	</update>
+		
+	<update id="updaterent" parameterType="MyRent" >
+	 update rent set price=#{price}  where rno=#{rno}
+	</update>
+</mapper>
