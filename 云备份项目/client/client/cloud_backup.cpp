@@ -182,6 +182,7 @@ bool CloudClient::GetBackUpFileList(vector<string>* list)
 			list->push_back(name);
 		}
 	}
+	return true;
 }
 
 //计算文件的eatg信息
